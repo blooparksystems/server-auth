@@ -16,7 +16,7 @@ def pre_init_hook_login_check(env):
         users = []
         env.cr.execute("SELECT login FROM res_users")
         for user in env.cr.fetchall():
-            login = user[0].lower()
+            login = user[0].lower().strip()
             if login not in users:
                 users.append(login)
             else:
@@ -31,4 +31,4 @@ def post_init_hook_login_convert(env):
         Environment.
     """
     with env.cr.savepoint():
-        env.cr.execute("UPDATE res_users SET login=lower(login)")
+        env.cr.execute("UPDATE res_users SET login=trim(lower(login))")
