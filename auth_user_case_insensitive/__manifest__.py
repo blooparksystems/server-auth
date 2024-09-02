@@ -12,7 +12,7 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": ["mail"],
+    "depends": ["mail", "auth_signup"],
     "pre_init_hook": "pre_init_hook_login_check",
     "post_init_hook": "post_init_hook_login_convert",
 }
